@@ -23,10 +23,28 @@ class User(AbstractUser):
         blank=True,
         max_length=255,
     )
-    userid = models.BigIntegerField(
+    email = models.EmailField(
         null=True,
         blank=True,
+        max_length=255,
     )
-
-    def get_absolute_url(self):
-        return reverse("users:detail", kwargs={"username": self.username})
+    first_name = models.CharField(
+        null=True,
+        blank=True,
+        max_length=255,
+    )
+    last_name = models.CharField(
+        null=True,
+        blank=True,
+        max_length=255,
+    )
+    timestamp_created = models.DateTimeField(
+        null=True,
+        blank=True,
+        auto_now_add=True,
+    )
+    last_updated = models.DateTimeField(
+        null=True,
+        blank=True,
+        auto_now=True,
+    )
